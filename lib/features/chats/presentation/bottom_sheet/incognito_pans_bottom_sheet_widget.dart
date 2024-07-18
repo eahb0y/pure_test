@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pure_test/core/theme/app_text_styles.dart';
 import 'package:pure_test/core/theme/colors/app_colors.dart';
 import 'package:pure_test/core/utils/app_utils.dart';
-import 'package:pure_test/features/home/presentation/bottom_sheet/widget/incognito_plan_item_widget.dart';
+import 'package:pure_test/features/chats/presentation/bottom_sheet/widget/incognito_plan_item_widget.dart';
 import 'package:pure_test/generated/l10n.dart';
 
 class IncognitoPansBottomSheetWidget extends StatelessWidget {
@@ -15,17 +15,20 @@ class IncognitoPansBottomSheetWidget extends StatelessWidget {
       color: LightThemeColors.dartBlue,
       child: Padding(
         padding: AppUtils.kPaddingAll16,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
+        child: ListView(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
-              children: [SvgPicture.asset("assets/svg/ic_cancel.svg")],
+              children: [
+                InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: SvgPicture.asset("assets/svg/ic_cancel.svg")),
+              ],
             ),
-            Image(
+            const Image(
               height: 68,
               image: AssetImage("assets/png/ic_incognito.png"),
             ),
@@ -40,26 +43,41 @@ class IncognitoPansBottomSheetWidget extends StatelessWidget {
               style: AppTextStyles.descStyle,
             ),
             AppUtils.kBoxHeight24,
-            const Row(
+            Row(
               children: [
-                Expanded(
+                const Expanded(
                   child: IncognitoPlanItemWidget(
                     incognitoCount: "1",
+                    planPrice: "99",
                   ),
                 ),
                 AppUtils.kBoxWidth16,
                 Expanded(
                   child: IncognitoPlanItemWidget(
-                    incognitoCount: "1",
+                    incognitoCount: "3",
+                    planPrice: "199",
+                    incognitoPromotion: AppLocalization.current.top,
                   ),
                 ),
                 AppUtils.kBoxWidth16,
-                Expanded(
+                const Expanded(
                   child: IncognitoPlanItemWidget(
                     incognitoCount: "1",
+                    planPrice: "399",
+                    incognitoPromotion: "-42%",
                   ),
                 ),
               ],
+            ),
+            AppUtils.kBoxHeight16,
+            ElevatedButton(
+              onPressed: () {},
+              child: Text(AppLocalization.current.buy),
+            ),
+            AppUtils.kBoxHeight24,
+            TextButton(
+              onPressed: () {},
+              child: Text(AppLocalization.current.status),
             )
           ],
         ),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:pure_test/features/main/presentation/bloc/main_bloc.dart';
-import 'package:pure_test/router/app_routes.dart';
 import 'package:pure_test/router/name_routes.dart';
 
 class InitialPage extends StatefulWidget {

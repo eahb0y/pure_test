@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pure_test/core/local_source/local_source.dart';
+import 'package:pure_test/core/theme/colors/app_colors.dart';
+import 'package:pure_test/features/chats/presentation/page/chats_page.dart';
+import 'package:pure_test/features/conversation/presentation/bloc/conversation_bloc.dart';
 import 'package:pure_test/features/conversation/presentation/page/conversation_page.dart';
-import 'package:pure_test/features/home/presentation/page/home_page.dart';
 import 'package:pure_test/features/initial/presentation/page/initial_page.dart';
 import 'package:pure_test/features/main/presentation/page/main_page.dart';
 import 'package:pure_test/injector_container.dart';
@@ -23,14 +26,20 @@ class AppRoutes {
       case Routes.main:
         if (settings.arguments != null) {
           return buildPageWithNoTransition(
-            child: MainPage(),
+            child: const MainPage(),
           );
         }
         return buildPageWithNoTransition(child: const MainPage());
       case Routes.initial:
-        return MaterialPageRoute(builder: (_) => InitialPage());
+        return MaterialPageRoute(builder: (_) => const InitialPage());
+      case Routes.conversation:
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider<ConversationBloc>(
+                  create: (context) => sl<ConversationBloc>(),
+                  child: const ConversationPage(),
+                ));
       default:
-        return MaterialPageRoute(builder: (_) => Scaffold());
+        return MaterialPageRoute(builder: (_) => const Scaffold());
     }
   }
 
@@ -39,17 +48,15 @@ class AppRoutes {
       print("route shell :  ${settings.name}");
     }
     switch (settings.name) {
-      case Routes.main:
-        return buildPageWithDefaultTransition(
-          child: const HomePage(),
-        );
       case Routes.massages:
         return buildPageWithDefaultTransition(
-          child: const ConversationPage(),
+          child: const ChatsPage(),
         );
       default:
         return buildPageWithDefaultTransition(
-          child: const HomePage(),
+          child: const Scaffold(
+            backgroundColor: LightThemeColors.purple,
+          ),
         );
     }
   }

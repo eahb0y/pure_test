@@ -44,4 +44,19 @@ class AppTextStyles {
     fontSize: 14,
     fontWeight: FontWeight.w500,
   );
+  static const appBatBottomText = TextStyle(
+    color: LightThemeColors.whiteText,
+    fontSize: 13,
+    fontWeight: FontWeight.w300,
+  );
+  static const textFieldLabel = TextStyle(
+    color: LightThemeColors.labelColor,
+    fontSize: 14,
+    fontWeight: FontWeight.w300,
+  );
+  static const emptyConverText = TextStyle(
+    color: LightThemeColors.labelColor,
+    fontSize: 12,
+    fontWeight: FontWeight.w300,
+  );
 }

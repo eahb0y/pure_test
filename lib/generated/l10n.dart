@@ -129,6 +129,26 @@ class AppLocalization {
       args: [],
     );
   }
+
+  /// `₽`
+  String get sum {
+    return Intl.message(
+      '₽',
+      name: 'sum',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сообщение...`
+  String get massage {
+    return Intl.message(
+      'Сообщение...',
+      name: 'massage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

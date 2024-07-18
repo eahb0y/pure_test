@@ -28,10 +28,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Режим инкогнито на 24 часа"),
         "incognito_mode_desc": MessageLookupByLibrary.simpleMessage(
             "Стань невидимкой в ленте и чатах, скрой объявление и наслаждайся <Space> незамеченным"),
+        "massage": MessageLookupByLibrary.simpleMessage("Сообщение..."),
         "off": MessageLookupByLibrary.simpleMessage("OFF"),
         "start_conversation":
             MessageLookupByLibrary.simpleMessage("Начни общение"),
         "status": MessageLookupByLibrary.simpleMessage("условия и положения"),
+        "sum": MessageLookupByLibrary.simpleMessage("₽"),
         "top": MessageLookupByLibrary.simpleMessage("Хит")
       };
 }

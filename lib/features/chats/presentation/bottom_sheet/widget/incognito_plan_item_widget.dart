@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:pure_test/core/functions/base_functions.dart';
 import 'package:pure_test/core/theme/app_text_styles.dart';
 import 'package:pure_test/core/theme/colors/app_colors.dart';
 import 'package:pure_test/core/utils/app_utils.dart';
-import 'package:pure_test/generated/l10n.dart';
 
 class IncognitoPlanItemWidget extends StatelessWidget {
   final String incognitoCount;
   final String? incognitoPromotion;
+  final String planPrice;
 
   const IncognitoPlanItemWidget({
     super.key,
     required this.incognitoCount,
     this.incognitoPromotion,
+    required this.planPrice,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 90,
+      height: 94,
       child: Stack(
         children: [
           Positioned(
@@ -25,7 +27,7 @@ class IncognitoPlanItemWidget extends StatelessWidget {
             right: 0,
             left: 0,
             child: Container(
-              height: 78,
+              height: 84,
               padding: AppUtils.kPaddingVer16Hor30,
               decoration: BoxDecoration(
                 color: ThemeColors.scaffoldBackgroundColor,
@@ -39,26 +41,35 @@ class IncognitoPlanItemWidget extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text(
-                        incognitoCount,
-                        style: AppTextStyles.plansIncognitoCount,
+                      Expanded(
+                        child: Text(
+                          incognitoCount,
+                          style: AppTextStyles.plansIncognitoCount,
+                        ),
                       ),
-                      AppUtils.kBoxWidth4,
+                      // AppUtils.kBoxWidth4,
                       const Image(
                         height: 18,
+                        width: 30,
                         image: AssetImage("assets/png/ic_isolate.png"),
                       )
                     ],
+                  ),
+                  // AppUtils.kBoxHeight10,
+                  Text(
+                    Functions.moneyFormat(int.tryParse(planPrice) ?? 0),
+                    style: AppTextStyles.plansIncognitoCount,
                   )
                 ],
               ),
             ),
           ),
-          Positioned.fill(
-            top: 0,
-            left: 20,
+          if (incognitoPromotion?.isNotEmpty ?? false)
+            Positioned.fill(
+              top: 0,
+              left: 20,
             right: 20,
-            bottom: 65,
+            bottom: 70,
             child: ClipOval(
               clipBehavior: Clip.hardEdge,
               child: Container(
@@ -82,9 +93,9 @@ class IncognitoPlanItemWidget extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    AppLocalization.current.top,
-                    style: AppTextStyles.bestSellerStyle,
-                  ),
+                      incognitoPromotion ?? "",
+                      style: AppTextStyles.bestSellerStyle,
+                    ),
                 ),
               ),
             ),

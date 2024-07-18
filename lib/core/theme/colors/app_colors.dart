@@ -21,4 +21,7 @@ class LightThemeColors extends ThemeColors {
   static const descColor = Color(0xFFBCB3B3);
   static const borderColor = Color(0xFF393737);
   static const bestSellerColor = Color(0xFF422B2B);
+  static const buttonBackColor = Color(0xFFAA044A);
+  static const disableButton = Color(0x80AA044A);
+  static const labelColor = Color(0xFF8D8D8D);
 }
